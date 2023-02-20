@@ -5,7 +5,8 @@ from django.http import HttpResponse
 # request --> response
 
 def simple_output(req):
-	return HttpResponse("Hello World")
+	# return HttpResponse("Hello World")
+	return render(req, 'simple_documentation.html')
 
 def anything(req):
-	return render(req, 'index.html', {'name': "RySes"})
+	return render(req, 'index.html', {'name': "Sample"})
