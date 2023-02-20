@@ -101,5 +101,8 @@ def returnHTMLWithReturnData(req):
 ```
 * You may see my code of [views.py](playground/views.py) and [HTML](playground/templates/index.html)
 ---
+### Run a server
+> Just execute `python manage.py runserver` to start, and visit `http://127.0.0.1:8000/users/test` to your browser.
+---
 ### Disclamer
 > This project is created analyzed and develop while watching the tutorial attached to this documentation. If you want to study about this, just to to the link.n Credits to Mash for his youtube tutorial.

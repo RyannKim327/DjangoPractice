@@ -8,4 +8,4 @@ def simple_output(req):
 	return HttpResponse("Hello World")
 
 def anything(req):
-	return render(req, 'index.html', {'names': "RySes"})
+	return render(req, 'index.html', {'name': "RySes"})
