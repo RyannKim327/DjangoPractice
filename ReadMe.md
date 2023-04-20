@@ -173,3 +173,66 @@ INSTALLED_APPS = [
 python manage.py runserver
 ```
 > Then you will see a link `http://127.0.0.1:8000`, click that and go to the url. You may see that your website doesn't look like what you did, the thing you need to do is to go to the url: `http://127.0.0.1:8000/hello/index/` to see the results.
+
+---
+### How to add Templates
+> First is you need to create a folder name `templates` inside of your `ProjectApp`. Inside of it, create a sample html, for example `index.html`. Next is go to your `views.py` inside of your `ProjectrApp`, and add this is the comparison of code on your file.
+
+**Before**
+```Python
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+# Create your views here.
+
+def a(request):
+	return HttpResponse("<h3>Hello World</h3>")
+
+```
+**After**
+```Python
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+# Create your views here.
+
+def a(request):
+	return HttpResponse("<h3>Hello World</h3>")
+
+def b(request):
+    return render(request, 'index.html')
+```
+> ***Note***: You may still change the function name based on what you want, I use a and b functions because I'm lazy to think some variable names. Now, after you've done that, go to your `urls.py` inside of your `ProjectApp` and add this inside of your `urlpatterns`
+```Python
+path('html/', views.b)
+```
+> So meaning to say, it may looks like this now.
+```Python
+
+from django.http import path
+from . import views
+
+urlpatterns = [
+	path('index/', views.a)
+    path('html/', views.b)
+]
+```
+---
+### How to set Static Files
+> So I actually forgot how, that's why I tried some trial and errors, and now, it works. First is you need to create a new folder, outside of your `ProjectApp`, but inside of your `ProjectName`, and named it `static`. In this name, Django will easily recognized the folder name. Next is create some resources there like your css. After you add your resources there, go to your html file, inside of the `template` folder on your `ProjectApp`, and add this line to the top of the code on in line one:
+```Django
+{% load static %}
+```
+> The sample use of static in including some resources such as image is like this
+```Django
+<link rel="stylesheet" type="text/css" href="{% static 'css/my.css' %}">
+<img src="{% static 'img/my.png' %}">
+```
+> The first line is for css, while the another line is for images, same with audios and videos, the `css/` and `img/` signifies as the folder name inside of the static folder. Next one is go to the `settings.py` inside of `ProjectName` or what we call the main. Look for the `STATIC_URL` and add this lines under of it.
+```Python
+STATICFILES_URLS = [BASE_URL / 'static']
+STATIC_ROOT = BASE_URL / 'static'
+```
+> This line will help Django to look for static folder faster.
