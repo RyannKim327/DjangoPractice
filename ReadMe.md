@@ -236,3 +236,6 @@ STATICFILES_URLS = [BASE_URL / 'static']
 STATIC_ROOT = BASE_URL / 'static'
 ```
 > This line will help Django to look for static folder faster.
+---
+### Other say
+> This program is not yet finish, I still in a way of learning, that's why I've done this like day by day. Big thanks to `Mr. Messiera` for helping us to learn this framework and providing some time to teach us. Specially on [CodeWithMosh](https://www.youtube.com/watch?v=rHux0gMZ3Eg).
