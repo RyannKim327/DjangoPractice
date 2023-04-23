@@ -92,24 +92,24 @@ urlpatterns = [
 URL configuration for DjangoProject project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
+	https://docs.djangoproject.com/en/4.2/topics/http/urls/
 Examples:
 Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+	1. Add an import:  from my_app import views
+	2. Add a URL to urlpatterns:  path('', views.home, name='home')
 Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+	1. Add an import:  from other_app.views import Home
+	2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
 Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+	1. Import the include() function: from django.urls import include, path
+	2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('hello/', include("DjangoApp.urls"))
+	path('admin/', admin.site.urls),
+	path('hello/', include("DjangoApp.urls"))
 ]
 ```
 > The default code of this file is:
@@ -118,23 +118,23 @@ urlpatterns = [
 URL configuration for DjangoProject project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
+	https://docs.djangoproject.com/en/4.2/topics/http/urls/
 Examples:
 Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+	1. Add an import:  from my_app import views
+	2. Add a URL to urlpatterns:  path('', views.home, name='home')
 Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+	1. Add an import:  from other_app.views import Home
+	2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
 Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+	1. Import the include() function: from django.urls import include, path
+	2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
 from django.urls import path
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+	path('admin/', admin.site.urls),
 ]
 
 ```
@@ -144,26 +144,26 @@ urlpatterns = [
 ```Python
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+	'django.contrib.admin',
+	'django.contrib.auth',
+	'django.contrib.contenttypes',
+	'django.contrib.sessions',
+	'django.contrib.messages',
+	'django.contrib.staticfiles',
 ]
 ```
 **After**
 ```Python
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+	'django.contrib.admin',
+	'django.contrib.auth',
+	'django.contrib.contenttypes',
+	'django.contrib.sessions',
+	'django.contrib.messages',
+	'django.contrib.staticfiles',
 
-    'DjangoApp',
+	'DjangoApp',
 ]
 ```
 ---
@@ -202,7 +202,7 @@ def a(request):
 	return HttpResponse("<h3>Hello World</h3>")
 
 def b(request):
-    return render(request, 'index.html')
+	return render(request, 'index.html')
 ```
 > ***Note***: You may still change the function name based on what you want, I use a and b functions because I'm lazy to think some variable names. Now, after you've done that, go to your `urls.py` inside of your `ProjectApp` and add this inside of your `urlpatterns`
 ```Python
@@ -216,7 +216,7 @@ from . import views
 
 urlpatterns = [
 	path('index/', views.a)
-    path('html/', views.b)
+	path('html/', views.b)
 ]
 ```
 ---
