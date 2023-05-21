@@ -3,8 +3,13 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-def a(request):
-	return HttpResponse("<h3>Hello World</h3>")
+def a(request, id):
+	# print(id)
+	# return HttpResponse(f"<h3>Hello {id}</h3>")
+	data = {
+		'id': id
+	}
+	return render(request, "index.html", {'data': data})
 
 def b(request):
 	return render(request, "index.html")
