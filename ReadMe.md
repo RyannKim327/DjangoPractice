@@ -30,6 +30,17 @@ deactivate
 ### What is the purpose of using Virtual Environment
 > It is to avoid the different errors you may have to your entire device, sprcially some data might be deleted. So the `Virtual Environment` is a way for you to protect your device, it creates a viretual storage or emulation of your device.
 ---
+### Create a requirements.txt
+> This file includes all the package you installed in your virtual environment or what we call `venv`. The code below is a terminal script you need to execute to automatically generate a `requirements.txt`.
+```Bash
+pip freeze > requirements.txt
+```
+---
+### Install packages from requirements.txt
+```Bash
+pip install -r requirements.txt
+```
+---
 ### Start a Django Project
 > Please note that if you start a project, you need first to activate the `Virtual Environment`. So first thing is you need to install django to your device `pip install django` and after you executed it, you may now create a new project. To create a project, kindly execute this to your terminal:
 ```Bash
