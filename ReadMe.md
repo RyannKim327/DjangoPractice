@@ -1,8 +1,18 @@
 ### Django Project
 #### MPOP Reverse II (Ryann Kim Sesgundo)
 ---
+| Table of Contents | Table of Contents |
+| --- | --- |
+| [Packages](#packages) | [Introduction](#intro) |
+| [How to start](#venv) | [What is the purpose of using Virtual Environment](#importance-of-venv) |
+| [Create a requirements.txt](#create-req) | [Install packages from requirements.txt](#install-req) |
+| [Start a Django Project](#startproject) | [Start an App or Component](#startapp) |
+| [Add some views](#addviews) | [How to connect](#connect) |
+| [How to run the project](#runserver) | [How to add Templates](#templates) |
+| [How to set Static Files](#static) | [Other say](#final) |
+---
+<h3 id="packages">Packages</h3>
 
-### Packages
 **Virtual Environment**
 ```Bash
 pip install virtualenv
@@ -13,10 +23,12 @@ pip install virtualenv
 pip install django
 ```
 ---
-### Introduction
+<h3 id="intro">Introduction</h3>
+
 > Please, before you install these packages, kindly explore the entire documentation of this repository.
 ---
-### How to start
+<h3 id="venv">How to start</h3>
+
 > First thing is you need to install the `Virtual Environment` or `Virtualenv` on your device `pip install virtualenv`. Then after you install the *Virtual Environment*, you need to add your virtual environment on your project, just type to your terminal `virtualenv venv`. The most common name of your environment is `venv`, if you want to have `collaborators`, `venv` is the best name because it is universal. Next is activate the script by executing this to your terminal:
 ```Bash
 .\venv\Scripts\activate
@@ -27,28 +39,34 @@ deactivate
 ```
 > to your terminal.
 ---
-### What is the purpose of using Virtual Environment
+<h3 id="importance-of-venv">What is the purpose of using Virtual Environment</h3>
+
 > It is to avoid the different errors you may have to your entire device, sprcially some data might be deleted. So the `Virtual Environment` is a way for you to protect your device, it creates a viretual storage or emulation of your device.
 ---
-### Create a requirements.txt
+<h3 id="create-req">Create a requirements.txt</h3>
+
 > This file includes all the package you installed in your virtual environment or what we call `venv`. The code below is a terminal script you need to execute to automatically generate a `requirements.txt`.
 ```Bash
 pip freeze > requirements.txt
 ```
 ---
-### Install packages from requirements.txt
+<h3 id="install-req">Install packages from requirements.txt</h3>
+
+> Before you install these packages from requirements.txt, you've must activate the `virtual environment` first. To activate, just go to these [section](#venv)
 ```Bash
 pip install -r requirements.txt
 ```
 ---
-### Start a Django Project
+<h3 id="startproject">Start a Django Project</h3>
+
 > Please note that if you start a project, you need first to activate the `Virtual Environment`. So first thing is you need to install django to your device `pip install django` and after you executed it, you may now create a new project. To create a project, kindly execute this to your terminal:
 ```Bash
 django-admin startproject ProjectName
 ```
 > Then you may see a new folder which is `ProjectName (if you use the same name from this tutorial)`. Inside of that folder, there's also another folder, same name as the `ProjectName`. It is the main of your website or program. You may also see the `manage.py` inside of your `PeojectName`.
 ---
-### Start an App or Component
+<h3 id="startapp">Start an App or Component</h3>
+
 > To start an app or component on django, you've must need to go to your project name, by simply using:
 ```Bash
 cd ProjectName
@@ -59,7 +77,8 @@ django-admin startapp ProjectApp
 ```
 > Take this as a note, you must not use the AppName, same as the ProjectName, it will having a conflict, since they were going to create some files and new directories.
 ---
-### Add some views
+<h3 id="addviews">Add some views</h3>
+
 > So you see the views.py inside of your `ProjectApp`, just go there and create a new function in python like this:
 ```Python
 from django.shortcuts import render
@@ -79,7 +98,8 @@ from django.shortcuts import render
 ```
 > You may also use html files, but it is later on our documentation
 ---
-### How to connect
+<h3 id="connect">How to connect</h3>
+
 > To connect the app to your project, you need first to create a new file in your `PeojectApp` and name it `urls.py`. It is generalized, you don't need to use `url.py`, it may cause error, so it must be `urls.py`. Inside of `urls.py, add these code:
 ```Python
 form django.http import path
@@ -178,7 +198,8 @@ INSTALLED_APPS = [
 ]
 ```
 ---
-### How to run the project
+<h3 id="runserver">How to run the project</h3>
+
 > To run this project, kindly execute this to your terminal
 ```Bash
 python manage.py runserver
@@ -186,7 +207,8 @@ python manage.py runserver
 > Then you will see a link `http://127.0.0.1:8000`, click that and go to the url. You may see that your website doesn't look like what you did, the thing you need to do is to go to the url: `http://127.0.0.1:8000/hello/index/` to see the results.
 
 ---
-### How to add Templates
+<h3 id="templates">How to add Templates</h3>
+
 > First is you need to create a folder name `templates` inside of your `ProjectApp`. Inside of it, create a sample html, for example `index.html`. Next is go to your `views.py` inside of your `ProjectrApp`, and add this is the comparison of code on your file.
 
 **Before**
@@ -231,7 +253,8 @@ urlpatterns = [
 ]
 ```
 ---
-### How to set Static Files
+<h3 id="static">How to set Static Files</h3>
+
 > So I actually forgot how, that's why I tried some trial and errors, and now, it works. First is you need to create a new folder, outside of your `ProjectApp`, but inside of your `ProjectName`, and named it `static`. In this name, Django will easily recognized the folder name. Next is create some resources there like your css. After you add your resources there, go to your html file, inside of the `template` folder on your `ProjectApp`, and add this line to the top of the code on in line one:
 ```Django
 {% load static %}
@@ -248,5 +271,6 @@ STATIC_ROOT = BASE_URL / 'static'
 ```
 > This line will help Django to look for static folder faster.
 ---
-### Other say
+<h3 id="final">Other say</h3>
+
 > This program is not yet finish, I still in a way of learning, that's why I've done this like day by day. Big thanks to `Mr. Messiera` for helping us to learn this framework and providing some time to teach us. Specially on [CodeWithMosh](https://www.youtube.com/watch?v=rHux0gMZ3Eg).
