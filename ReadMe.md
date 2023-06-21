@@ -9,7 +9,10 @@
 | [Start a Django Project](#startproject) | [Start an App or Component](#startapp) |
 | [Add some views](#addviews) | [How to connect](#connect) |
 | [How to run the project](#runserver) | [How to add Templates](#templates) |
-| [How to set Static Files](#static) | [Other say](#final) |
+| [How to set Static Files](#static) | [Create a super user or admin](#admin-superuser) |
+| [Models or Databases](#models) | [Make Migrations](#makemigrations) |
+| [Other say](#final) |
+
 ---
 <h3 id="packages">Packages</h3>
 
