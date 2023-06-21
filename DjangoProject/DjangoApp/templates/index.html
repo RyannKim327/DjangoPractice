@@ -10,7 +10,8 @@
 	</head>
 	<body>
 		<div class="container">
-			<form action="">
+			<form action="login/" method="POST">
+				{% csrf_token %}
 				<table>
 					<caption>
 						<h3>Login Panel {{ data.id }}</h3>

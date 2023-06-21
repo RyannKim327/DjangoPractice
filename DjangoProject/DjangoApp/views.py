@@ -13,3 +13,11 @@ def a(request, id):
 
 def b(request):
 	return render(request, "index.html")
+
+def login(request):
+	if request.method == "POST":
+		username = request.POST.get('username', '')
+		password = request.POST.get('password', '')
+		return HttpResponse(username + " " + password)
+	else:
+		return HttpResponse("There is no permission here")

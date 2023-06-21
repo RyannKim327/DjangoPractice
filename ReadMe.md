@@ -271,7 +271,7 @@ STATIC_ROOT = BASE_URL / 'static'
 ```
 > This line will help Django to look for static folder faster.
 ---
-<h3 id=admin-superuser>Create a super user or admin</h3>
+<h3 id="admin-superuser">Create a super user or admin</h3>
 
 > The one of the requirements for a system is to have a database, and to create a specific database, we need to create an admin account or what we called super user. To create a `super user`, we need first to `migrate` the Django Project by executing this command to your terminal.
 ```Bash
@@ -282,6 +282,41 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 > And once you've execute this, you need to fill up some forms, such as username, email and passwords.
+---
+<h3 id="models">Database</h3>
+
+> Here's a way for you to create a database here in Django, but before you create a database, you need first to have a [Super User](#admin-superuser). Then follow these steps. First is you need to go to your `models.py` inside of your `Project App` which is also our [component](#startapp). You may see these code:
+```Python
+from django.db import models
+
+# Create your models here.
+```
+> Here's where you need to go through. Create a class, which represents as your table name, so if you want to creata a table name called `users` use users as class name, just like this example.
+```Python
+from django.db import models
+
+# Create your models here.
+class users(models.Model):
+	# Then add some column name here such as
+	username = models.CharField(max_length=25)
+	email = models.CharField(max_length=50)
+	password = models.CharField(max_length=100)
+```
+> To understand this code, here's the sample result if this in `SQL`
+```SQL
+CREATE TABLE users(
+	username VARCHAR(30),
+	email VARCHAR(50),
+	password VARCHAR(100),
+)
+```
+---
+<h3 id="makemigrations">Make Migrations</h3>
+
+> `makemigrations` in Django is use to packaging up all the models in Django. Models defines as the datanbase in Django. So after you create a models in python which can be found [here](#models), you need to execute it so that your database will be updated too.
+```Bash
+python manage.py makemigrations
+```
 ---
 <h3 id="final">Other say</h3>
 
