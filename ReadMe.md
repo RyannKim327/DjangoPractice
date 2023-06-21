@@ -271,6 +271,18 @@ STATIC_ROOT = BASE_URL / 'static'
 ```
 > This line will help Django to look for static folder faster.
 ---
+<h3 id=admin-superuser>Create a super user or admin</h3>
+
+> The one of the requirements for a system is to have a database, and to create a specific database, we need to create an admin account or what we called super user. To create a `super user`, we need first to `migrate` the Django Project by executing this command to your terminal.
+```Bash
+python manage.py migrate
+```
+> And it gives you some information, after it says a successful message, execute this to your terminal:
+```Bash
+python manage.py createsuperuser
+```
+> And once you've execute this, you need to fill up some forms, such as username, email and passwords.
+---
 <h3 id="final">Other say</h3>
 
 > This program is not yet finish, I still in a way of learning, that's why I've done this like day by day. Big thanks to `Mr. Messiera` for helping us to learn this framework and providing some time to teach us. Specially on [CodeWithMosh](https://www.youtube.com/watch?v=rHux0gMZ3Eg).
