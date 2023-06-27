@@ -16,17 +16,39 @@ def a(request, id):
 	}
 	return render(request, "index.html", {'data': data})
 
-def b(request):
+def loginForm(request):
 	return render(request, "index.html")
+
+def regForm(request):
+	return render(request, "registration.html")
+
+def register(request):
+	if request.method == "POST":
+		username = request.POST.get('username', '')
+		password = hash(request.POST.get('password', ''))
+		user.objects.create(
+			username = username,
+			password = hash(password)
+		).save()
+		return HttpResponse(username + " " + password)
+	else:
+		return HttpResponse("There is no permission here")
 
 def login(request):
 	if request.method == "POST":
-		username = request.POST.get('username', '')
-		password = request.POST.get('password', '')
-		user.objects.create(
-			username = username,
-			password = password
-		).save()
-		return HttpResponse(username + " " + password)
+		try:
+			username = request.POST.get('username', '')
+			password = hash(request.POST.get('password', ''))
+			d = user.objects.get(username__exact=username)
+			if password == d.password:
+				return HttpResponse("Login in")
+			else:
+				return render(request, "index.html", {
+					"error": "Wrong username or password"
+				})
+		except:
+			return render(request, "index.html", {
+				"error": "Wrong username or password"
+			})
 	else:
 		return HttpResponse("There is no permission here")
