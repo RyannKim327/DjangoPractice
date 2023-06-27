@@ -11,7 +11,7 @@
 | [How to run the project](#runserver) | [How to add Templates](#templates) |
 | [How to set Static Files](#static) | [Create a super user or admin](#admin-superuser) |
 | [Models or Databases](#models) | [Make Migrations](#makemigrations) |
-| [Other say](#final) |
+| [Database to Admin](#db2admin) | [Other say](#final) |
 
 ---
 <h3 id="packages">Packages</h3>
@@ -320,6 +320,8 @@ CREATE TABLE users(
 ```Bash
 python manage.py makemigrations
 ```
+---
+<h3 id="db2admin">Database to admin</h3>
 ---
 <h3 id="final">Other say</h3>
 

@@ -1,5 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import *
+import hashlib
+
+def hash(text):
+	return (hashlib.sha256(text.encode())).hexdigest()
 
 # Create your views here.
 
@@ -18,6 +23,10 @@ def login(request):
 	if request.method == "POST":
 		username = request.POST.get('username', '')
 		password = request.POST.get('password', '')
+		user.objects.create(
+			username = username,
+			password = password
+		).save()
 		return HttpResponse(username + " " + password)
 	else:
 		return HttpResponse("There is no permission here")

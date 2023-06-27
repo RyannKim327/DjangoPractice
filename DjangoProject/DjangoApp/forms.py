@@ -1,8 +1,7 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, PasswordInput, CharField
 from .models import *
 
 class usersForm(ModelForm):
-	
 	class Meta:
-		model = users
+		model = user
 		fields = '__all__'
