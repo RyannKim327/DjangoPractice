@@ -43,12 +43,14 @@ def login(request):
 			if password == d.password:
 				return HttpResponse("Login in")
 			else:
-				return render(request, "index.html", {
+				return render(request, "index.html", { "data": {
 					"error": "Wrong username or password"
-				})
+				}})
 		except:
-			return render(request, "index.html", {
+			return render(request, "index.html", { "data": {
 				"error": "Wrong username or password"
-			})
+			}})
 	else:
-		return HttpResponse("There is no permission here")
+		return render(request, "index.html", { "data": {
+			'error': "Welcome user"
+		}})
