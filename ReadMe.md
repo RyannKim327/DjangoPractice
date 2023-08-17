@@ -269,8 +269,8 @@ urlpatterns = [
 ```
 > The first line is for css, while the another line is for images, same with audios and videos, the `css/` and `img/` signifies as the folder name inside of the static folder. Next one is go to the `settings.py` inside of `ProjectName` or what we call the main. Look for the `STATIC_URL` and add this lines under of it.
 ```Python
-STATICFILES_URLS = [BASE_URL / 'static']
-STATIC_ROOT = BASE_URL / 'static'
+STATICFILES_URLS = [BASE_DIR / 'static']
+STATIC_ROOT = BASE_DIR / 'static'
 ```
 > This line will help Django to look for static folder faster.
 ---

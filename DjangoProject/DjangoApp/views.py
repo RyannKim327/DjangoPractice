@@ -28,7 +28,7 @@ def register(request):
 		password = hash(request.POST.get('password', ''))
 		user.objects.create(
 			username = username,
-			password = hash(password)
+			password = password
 		).save()
 		return HttpResponse(username + " " + password)
 	else:
@@ -41,16 +41,17 @@ def login(request):
 			password = hash(request.POST.get('password', ''))
 			d = user.objects.get(username__exact=username)
 			if password == d.password:
-				return HttpResponse("Login in")
+				return render(request, "index.html", { "data": {
+					"msg": "Wrong username or password"
+				}})
 			else:
 				return render(request, "index.html", { "data": {
-					"error": "Wrong username or password"
+					"msg": "Wrong username or password"
 				}})
 		except:
 			return render(request, "index.html", { "data": {
-				"error": "Wrong username or password"
+				"msg": "Wrong username or password"
 			}})
-	else:
-		return render(request, "index.html", { "data": {
-			'error': "Welcome user"
-		}})
+	return render(request, "index.html", { "data": {
+		'msg': "Welcome user"
+	}})
