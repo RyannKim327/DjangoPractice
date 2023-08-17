@@ -19,9 +19,6 @@ def a(request, id):
 def loginForm(request):
 	return render(request, "index.html")
 
-def regForm(request):
-	return render(request, "registration.html")
-
 def register(request):
 	if request.method == "POST":
 		username = request.POST.get('username', '')
@@ -30,9 +27,9 @@ def register(request):
 			username = username,
 			password = password
 		).save()
-		return HttpResponse(username + " " + password)
+		return HttpResponse(f"{username} {password}")
 	else:
-		return HttpResponse("There is no permission here")
+		return render(request, "registration.html")
 
 def login(request):
 	if request.method == "POST":
