@@ -264,10 +264,10 @@ urlpatterns = [
 ```
 > The sample use of static in including some resources such as image is like this
 ```Django
-<link rel="stylesheet" type="text/css" href="{% static 'css/my.css' %}">
-<img src="{% static 'img/my.png' %}">
+<link rel="stylesheet" type="text/css" href="{% static '/css/my.css' %}">
+<img src="{% static '/img/my.png' %}">
 ```
-> The first line is for css, while the another line is for images, same with audios and videos, the `css/` and `img/` signifies as the folder name inside of the static folder. Next one is go to the `settings.py` inside of `ProjectName` or what we call the main. Look for the `STATIC_URL` and add this lines under of it.
+> The first line is for css, while the another line is for images, same with audios and videos, the `/css/` and `/img/` signifies as the folder name inside of the static folder. Next one is go to the `settings.py` inside of `ProjectName` or what we call the main. Look for the `STATIC_URL` and add this lines under of it.
 ```Python
 STATICFILES_URLS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'static'
@@ -316,13 +316,15 @@ CREATE TABLE users(
 ---
 <h3 id="makemigrations">Make Migrations</h3>
 
-> `makemigrations` in Django is use to packaging up all the models in Django. Models defines as the datanbase in Django. So after you create a models in python which can be found [here](#models), you need to execute it so that your database will be updated too.
+> `makemigrations` in Django is use to packaging up all the models in Django. Models defines as the database in Django. So after you create a models in python which can be found [here](#models), you need to execute it so that your database will be updated too.
 ```Bash
 python manage.py makemigrations
 ```
 ---
 <h3 id="db2admin">Database to admin</h3>
+
+> So, for you who want to see the database clear, just go to `http://127.0.0.1:8080/admin/` or to your localhost admin, and login your credentials used in [superuser](#admin-superuser). Then you may now see the tables existed, as well as the data you have.
 ---
 <h3 id="final">Other say</h3>
 
-> This program is not yet finish, I still in a way of learning, that's why I've done this like day by day. Big thanks to `Mr. Messiera` for helping us to learn this framework and providing some time to teach us. Specially on [CodeWithMosh](https://www.youtube.com/watch?v=rHux0gMZ3Eg).
+> This program is not yet finish, I still in a way of learning, that's why I've done this like day by day. Big thanks to `Mr. Leonard Andrew Mesiera` for helping us to learn this framework and providing some time to teach us. Also on [CodeWithMosh](https://www.youtube.com/watch?v=rHux0gMZ3Eg)'s youtube channel.
