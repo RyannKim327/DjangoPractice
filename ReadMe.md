@@ -294,12 +294,12 @@ from django.db import models
 
 # Create your models here.
 ```
-> Here's where you need to go through. Create a class, which represents as your table name, so if you want to creata a table name called `users` use users as class name, just like this example.
+> Here's where you need to go through. Create a class, which represents as your table name, so if you want to creata a table name called `user` use user as class name, just like this example.
 ```Python
 from django.db import models
 
 # Create your models here.
-class users(models.Model):
+class user(models.Model):
 	# Then add some column name here such as
 	username = models.CharField(max_length=25)
 	email = models.CharField(max_length=50)
@@ -307,11 +307,28 @@ class users(models.Model):
 ```
 > To understand this code, here's the sample result if this in `SQL`
 ```SQL
-CREATE TABLE users(
+CREATE TABLE user(
 	username VARCHAR(30),
 	email VARCHAR(50),
 	password VARCHAR(100),
 )
+```
+> Next is, you need to include the model into your djangoapp, just go to admin.py and add `admin.site.register(yourmodel)` Here's the example
+
+``` Python
+# From these code
+from django.contrib import admin
+# Register your models here.
+
+# ------------------------------- #
+
+# To this code
+from django.contrib import admin
+from .models import *
+# Register your models here.
+
+admin.site.register(user)
+
 ```
 ---
 <h3 id="makemigrations">Make Migrations</h3>
