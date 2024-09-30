@@ -21,10 +21,14 @@
 pip install virtualenv
 ```
 
+***Once the virtual environment is enabled***
 **Django**
 ```Bash
 pip install django
 ```
+
+> Before you get started, kindly read [These get to start tutorial](#venv)
+
 ---
 <h3 id="intro">Introduction</h3>
 
@@ -36,7 +40,7 @@ pip install django
 ```Bash
 .\venv\Scripts\activate
 ```
->And lastly, if you want to finish or deactivate the virtual environmane, just type:
+> Then you may now start installing Django. Also, once you've already created `venv` you don't need to create another one, just activate and start running the package with `python manage.py runserver`. *Always take note* that, *you must install venv aligned with your DjangoProject*, it will create conflicts to your program. And lastly, if you want to finish or deactivate the virtual environmant, just type:
 ```Bash
 deactivate
 ```
@@ -312,6 +316,17 @@ CREATE TABLE user(
 	email VARCHAR(50),
 	password VARCHAR(100),
 )
+```
+> In addition, you may also use the defaults in Django for password by importing forms from django and using of forms.PasswordInput, here's the example
+```Python
+from django.db import models
+from django import forms
+# Create your models here.
+class user(models.Model):
+	# Then add some column name here such as
+	username = models.CharField(max_length=25)
+	email = models.CharField(max_length=50, widget=forms.PasswordInput)
+	password = models.CharField(max_length=100)
 ```
 > Next is, you need to include the model into your djangoapp, just go to admin.py and add `admin.site.register(yourmodel)` Here's the example
 
