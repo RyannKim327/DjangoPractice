@@ -13,6 +13,10 @@
 | [Models or Databases](#models) | [Make Migrations](#makemigrations) |
 | [Database to Admin](#db2admin) | [Other say](#final) |
 
+| CRUD Section | |
+| --- | --- |
+| [Add Data](#add_data) |  |
+
 ---
 <h3 id="packages">Packages</h3>
 
@@ -357,6 +361,24 @@ python manage.py makemigrations
 
 > So, for you who want to see the database clear, just go to `http://127.0.0.1:8080/admin/` or to your localhost admin, and login your credentials used in [superuser](#admin-superuser). Then you may now see the tables existed, as well as the data you have.
 ---
+<h3 id="add_data">Add Data</h3>
+
+> Since we use the [`user` Models](#models) here's the sample how do we going to add data 
+with Django. In views.py. add these things inside, but not in literal, meaning read the comments where the code need to be inserter.
+
+``` python
+# In imports
+from .models import user
+
+# In the part of defs example is
+def addUser(req):
+	user.objects.create(username="Your username", email="sample@email.com", password="sample password")
+
+```
+> Take note that the parameters used here must be the data or columns you added on your Models
+
+---
+
 <h3 id="final">Other say</h3>
 
 > This program is not yet finish, I still in a way of learning, that's why I've done this like day by day. Big thanks to `Mr. Leonard Andrew Mesiera` for helping us to learn this framework and providing some time to teach us. Also on [CodeWithMosh](https://www.youtube.com/watch?v=rHux0gMZ3Eg)'s youtube channel.
