@@ -11,11 +11,9 @@
 | [How to run the project](#runserver) | [How to add Templates](#templates) |
 | [How to set Static Files](#static) | [Create a super user or admin](#admin-superuser) |
 | [Models or Databases](#models) | [Make Migrations](#makemigrations) |
-| [Database to Admin](#db2admin) | [Other say](#final) |
-
-| CRUD Section | |
-| --- | --- |
-| [Add Data](#add_data) |  |
+| [Database to Admin](#db2admin) | [Add Data](#add_data) |
+| [Retieve Data](#get_data) | [Update Data](#update_data) |
+| [Delete Data](#delete_data) | [Other say](#final) |
 
 ---
 <h3 id="packages">Packages</h3>
@@ -25,7 +23,7 @@
 pip install virtualenv
 ```
 
-***Once the virtual environment is enabled***
+# Note ***Once the virtual environment is enabled install this:***
 **Django**
 ```Bash
 pip install django
@@ -37,12 +35,17 @@ pip install django
 <h3 id="intro">Introduction</h3>
 
 > Please, before you install these packages, kindly explore the entire documentation of this repository.
+
 ---
 <h3 id="venv">How to start</h3>
 
-> First thing is you need to install the `Virtual Environment` or `Virtualenv` on your device `pip install virtualenv`. Then after you install the *Virtual Environment*, you need to add your virtual environment on your project, just type to your terminal `virtualenv venv`. The most common name of your environment is `venv`, if you want to have `collaborators`, `venv` is the best name because it is universal. Next is activate the script by executing this to your terminal:
+> First thing is you need to install the `Virtual Environment` or `Virtualenv` on your device `pip install virtualenv`. Then after you install the *Virtual Environment*, you need to add your virtual environment on your project, just type to your terminal `virtualenv venv` or `python -m venv venv`. The most common name of your environment is `venv`, if you want to have `collaborators`, `venv` is the best name because it is universal. Next is activate the script by executing this to your terminal: (btw, don't include the hashtag it is just a comment)
 ```Bash
+# For Windows
 .\venv\Scripts\activate
+
+# For Linux
+source venv/Lib/activate
 ```
 > Then you may now start installing Django. Also, once you've already created `venv` you don't need to create another one, just activate and start running the package with `python manage.py runserver`. *Always take note* that, *you must install venv aligned with your DjangoProject*, it will create conflicts to your program. And lastly, if you want to finish or deactivate the virtual environmant, just type:
 ```Bash
@@ -376,6 +379,21 @@ def addUser(req):
 
 ```
 > Take note that the parameters used here must be the data or columns you added on your Models
+
+---
+<h3 id="get_data">Retrieve Data</h3>
+
+> Empty section
+
+---
+<h3 id="update_data">Update Data</h3>
+
+> Empty section
+
+---
+<h3 id="delete_data">Delete Data</h3>
+
+> Empty section
 
 ---
 
