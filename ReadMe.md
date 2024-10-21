@@ -332,8 +332,8 @@ from django import forms
 class user(models.Model):
 	# Then add some column name here such as
 	username = models.CharField(max_length=25)
-	email = models.CharField(max_length=50, widget=forms.PasswordInput)
-	password = models.CharField(max_length=100)
+	email = models.CharField(max_length=50)
+	password = models.CharField(max_length=100, widget=forms.PasswordInput)
 ```
 > Next is, you need to include the model into your djangoapp, just go to admin.py and add `admin.site.register(yourmodel)` Here's the example
 
