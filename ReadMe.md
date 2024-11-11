@@ -12,8 +12,9 @@
 | [How to set Static Files](#static) | [Create a super user or admin](#admin-superuser) |
 | [Models or Databases](#models) | [Make Migrations](#makemigrations) |
 | [Database to Admin](#db2admin) | [Add Data](#add_data) |
-| [Retieve Data](#get_data) | [Update Data](#update_data) |
-| [Delete Data](#delete_data) | [Other say](#final) |
+| [Retieve Data](#get_data) | [Filter or search data](#filter_data)
+| [Update Data](#update_data) | [Delete Data](#delete_data) |
+| [Other say](#final) |
 
 ---
 <h3 id="packages">Packages</h3>
@@ -382,13 +383,50 @@ def addUser(req):
 
 ---
 <h3 id="get_data">Retrieve Data</h3>
+``` Python
+# In imports
+from django.shortcuts import render
+from .models import user
+
+# In the part of function and defs
+def fetchUser(req):
+  # This will get the parameterr from the url where we will going
+  # to modify a data, example is /user?username=RyannKim327
+  usr = user.objects.get(username=req.GET.get("username"))
+  return render(req, "getData.html", {
+    "data": usr
+  })
+
+```
+> This is just an example to fetch a data, to include this into your templates, you may use also `{%  %}` for blocks and `{{ }}` for prints.
+
+---
+<h3 id="filter_data">Filter or Search Data</h3>
 
 > Empty section
 
 ---
 <h3 id="update_data">Update Data</h3>
 
-> Empty section
+``` Python
+# In imports
+from .models import user
+
+# In the part of function and defs
+def updateUser(req):
+  # This is just an example fetching a data from a form
+  if req.method == "POST":
+    # This will get the parameterr from the url where we will going
+    # to modify a data, example is /user?username=RyannKim327
+    usr = user.objects.get(username=req.GET.get("username"))
+    usr.email = req.POST.get("email")
+    usr.password = req.POST.get("password")
+    usr.save()
+    return HttpResponse("<h1>Done</h1>")
+
+```
+> Remember, you need first to look for the information you want to modify, it is just search process, then modify it, 
+by re initiating it and save.
 
 ---
 <h3 id="delete_data">Delete Data</h3>
