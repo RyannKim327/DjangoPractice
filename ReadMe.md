@@ -383,7 +383,9 @@ def addUser(req):
 
 ---
 <h3 id="get_data">Retrieve Data</h3>
-``` Python
+
+
+``` python
 # In imports
 from django.shortcuts import render
 from .models import user
