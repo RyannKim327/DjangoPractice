@@ -209,7 +209,19 @@ INSTALLED_APPS = [
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
 
-	'DjangoApp',
+	'DjangoApp',# In imports
+from django.shortcuts import render
+from .models import user
+
+# In the part of function and defs
+def fetchUser(req):
+  # This will get the parameterr from the url where we will going
+  # to modify a data, example is /user?username=RyannKim327
+  usr = user.objects.get(username=req.GET.get("username"))
+  return render(req, "getData.html", {
+    "data": usr
+  })
+
 ]
 ```
 ---
@@ -376,7 +388,8 @@ from .models import user
 
 # In the part of defs example is
 def addUser(req):
-	user.objects.create(username="Your username", email="sample@email.com", password="sample password")
+	usr = user.objects.create(username="Your username", email="sample@email.com", password="sample password")
+	usr.save()
 
 ```
 > Take note that the parameters used here must be the data or columns you added on your Models
@@ -405,12 +418,27 @@ def fetchUser(req):
 ---
 <h3 id="filter_data">Filter or Search Data</h3>
 
+``` python
+# In imports
+from django.shortcuts import render
+from .models import user
+
+# In the part of function and defs
+def fetchUser(req):
+  # This will get the parameterr from the url where we will going
+  # to modify a data, example is /user?username=RyannKim327
+  usr = user.objects.filter(email=req.GET.get("email"))
+  return render(req, "fetchData.html", {
+    "data": usr
+  })
+
+```
 > Empty section
 
 ---
 <h3 id="update_data">Update Data</h3>
 
-``` Python
+``` python
 # In imports
 from .models import user
 
@@ -427,16 +455,139 @@ def updateUser(req):
     return HttpResponse("<h1>Done</h1>")
 
 ```
-> Remember, you need first to look for the information you want to modify, it is just search process, then modify it, 
-by re initiating it and save.
+> Remember, you need first to look for the information you want to modify, it is just search process, then modify it, by re-initiating it and save.
 
 ---
 <h3 id="delete_data">Delete Data</h3>
 
-> Empty section
+``` python
+# In imports
+from .models import user
+
+# In the part of function and defs
+def deleteUser(req):
+	# This will get the parameterr from the url where we will going
+	# to modify a data, example is /user?username=RyannKim327
+	usr = user.objects.get(username=req.GET.get("username"))
+	usr.delete()
+	return HttpResponse("<h1>Done</h1>")
+
+```
+
+> Remember, you need to add some confirmation process into your frontend, once you delete this something like this, the data will be permanently remove.
 
 ---
+<h3 id="template-sample">Example of Template with data</h3>
 
+> The code below is just an example of the template, containing the data.
+
+``` HTML
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Welcome user</title>
+	</head>
+	<body>
+    <div>
+      <div class="header">
+        <h3>Welcome admin</h3>
+      </div>
+      <div>
+        <div>
+          <h3 style="margin-bottom: .5rem;">Employee Lists</h3>
+        </div>
+        <ol>
+          {% if data  %}
+            {% for i in data %} 
+              <li>
+                <span onclick="location.href = 'modify?username={{ i.username }}'">{{ i.email }}</span>
+              </li>
+            {% endfor %}
+          {% else %}
+            <p style="text-align: center;">There's no data added here</p>
+          {% endif %}
+        </div>
+      </ol>
+    </div>
+	</body>
+</html>
+
+```
+
+> # In single data, here's the example
+
+``` HTML
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Welcome user</title>
+	</head>
+	<body>
+    <div>
+      <div class="header">
+        <h3>Welcome admin</h3>
+        <nav>
+          <ul>
+            <li onclick="location.href='/add-user'">Add new Employee</li>
+         </ul>
+        </nav>
+      </div>
+      <div>
+        <div>
+          <h3 style="margin-bottom: .5rem;">Employee Lists</h3>
+        </div>
+        <ol>
+          {% if data  %}
+            {% for i in data %} 
+              <li>
+                <span onclick="location.href = 'delete?username={{ i.username }}'">{{ i.email }}</span>
+              </li>
+            {% endfor %}
+          {% else %}
+            <p style="text-align: center;">There's no data added here</p>
+          {% endif %}
+        </div>
+      </ol>
+    </div>
+	</body>
+</html>
+
+```
+
+> # Example of having forms
+
+```HTML
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Add new User</title>
+  </head>
+  <body>
+    <div class="base">
+      <form method="POST" action="/add-user">
+        {% csrf_token %}
+        <h3 style="text-align: center; width: 100%; margin-bottom: 1.25rem;">Add New Employee</h3>
+        <label for="username"><span>Username:<sup>*</sup></span> <input type="text" name="username" id="username"></label>
+        <label for="email">Email: <input type="email" name="email" id="email"> </label>
+        <label for="password"><span>Password:<sup>*</sup></span> <input type="password" name="password" id="password"></label>
+        <div>
+          <input type="submit" value="Add new user">
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+
+```
+> ### In this part, the most important to have is the `{% csrf_token %}` inside of the form tag in html.
+
+---
 <h3 id="final">Other say</h3>
 
-> This program is not yet finish, I still in a way of learning, that's why I've done this like day by day. Big thanks to `Mr. Leonard Andrew Mesiera` for helping us to learn this framework and providing some time to teach us. Also on [CodeWithMosh](https://www.youtube.com/watch?v=rHux0gMZ3Eg)'s youtube channel.
+> This program is not yet finish, I still in a way of learning, that's why I've done this like day by day. Big thanks to `Mr. Leonard Andrew Mesiera` for helping us to learn this framework and providing some time to teach us. Also on [CodeWithMosh](https://www.youtube.com/watch?v=rHux0gMZ3Eg)'s youtube channel. Special mention for sir `John Rovie Balingbing` for teaching us with his subject WS101.
