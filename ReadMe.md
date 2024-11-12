@@ -15,7 +15,7 @@
 | [Retieve Data](#get_data) | [Filter or search data](#filter_data)
 | [Update Data](#update_data) | [Delete Data](#delete_data) |
 | [Example of Template with data](#template-sample) | [Example of template forms](#template-forms) |
-| [Other say](#final) |
+| [Deployment](#deployment) | [Other say](#final) |
 
 ---
 <h3 id="packages">Packages</h3>
@@ -29,6 +29,11 @@ pip install virtualenv
 **Django**
 ```Bash
 pip install django
+```
+**WhiteNoise**
+> This package is for [Deployment](#deployment)
+```Bash
+pip install whitenoise
 ```
 
 > Before you get started, kindly read [These get to start tutorial](#venv)
@@ -559,6 +564,7 @@ def deleteUser(req):
 
 ```
 
+---
 <h3 id="template-forms"> Example of having forms</h3>
 
 ```HTML
@@ -589,6 +595,53 @@ def deleteUser(req):
 > ### In this part, the most important to have is the `{% csrf_token %}` inside of the form tag in html.
 
 ---
+<h3 id="deployment">Deployment</h3>
+
+> In deployment, such as in [PythonAnywhere](https://www.pythonanywhere.com/), you need to setup the settings here. So first, go to your `settings.py`, you may found it into your project. Look for `ALLOWED_HOSTS = []` and add a value "*". So the example here is
+
+```python
+# Before
+ALLOWED_HOSTS = []
+
+# After
+ALLOWED_HOSTS = ["*"]
+```
+
+> If you notice the the `admin` page has no design, kindly install `whitenoise` and modify again the `settings.py` under `MIDDLEWARES`
+
+```python
+# Before
+
+MIDDLEWARE = [
+	'django.middleware.security.SecurityMiddleware',
+	'django.contrib.sessions.middleware.SessionMiddleware',
+	'django.middleware.common.CommonMiddleware',
+	'django.middleware.csrf.CsrfViewMiddleware',
+	'django.contrib.auth.middleware.AuthenticationMiddleware',
+	'django.contrib.messages.middleware.MessageMiddleware',
+	'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+# AFTER
+
+MIDDLEWARE = [
+	'whitenoise.middleware.WhiteNoiseMiddleware',
+	'django.middleware.security.SecurityMiddleware',
+	'django.contrib.sessions.middleware.SessionMiddleware',
+	'django.middleware.common.CommonMiddleware',
+	'django.middleware.csrf.CsrfViewMiddleware',
+	'django.contrib.auth.middleware.AuthenticationMiddleware',
+	'django.contrib.messages.middleware.MessageMiddleware',
+	'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+```
+
+> Then lastly is to add these after the `STATIC_URL`
+```python
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+```
+
+---
 <h3 id="final">Other say</h3>
 
-> This program is not yet finish, I still in a way of learning, that's why I've done this like day by day. Big thanks to `Mr. Leonard Andrew Mesiera` for helping us to learn this framework and providing some time to teach us. Also on [CodeWithMosh](https://www.youtube.com/watch?v=rHux0gMZ3Eg)'s youtube channel. Special mention for sir `John Rovie Balingbing` for teaching us with his subject WS101.
+> This program is not yet finish, I still in a way of learning, that's why I've done this like day by day. Big thanks to `Mr. Leonard Andrew Mesiera` for helping us to learn this framework and providing some time to teach us. Also on [`CodeWithMosh`](https://www.youtube.com/watch?v=rHux0gMZ3Eg)'s youtube channel. Special mention for sir `John Rovie Balingbing` for teaching us with his subject WS101. Also to [`Stackless Tech`](https://www.youtube.com/watch?v=WGo-1xB-NO8) for the solution of aving no design in pythonanywhere
