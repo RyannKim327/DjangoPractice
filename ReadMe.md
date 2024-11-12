@@ -14,6 +14,7 @@
 | [Database to Admin](#db2admin) | [Add Data](#add_data) |
 | [Retieve Data](#get_data) | [Filter or search data](#filter_data)
 | [Update Data](#update_data) | [Delete Data](#delete_data) |
+| [Example of Template with data](#template-sample) | [Example of template forms](#template-forms) |
 | [Other say](#final) |
 
 ---
@@ -558,7 +559,7 @@ def deleteUser(req):
 
 ```
 
-> # Example of having forms
+<h3 id="template-forms"> Example of having forms</h3>
 
 ```HTML
 <!doctype html>
